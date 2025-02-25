@@ -4,7 +4,7 @@ pipeline {
       githubPush() 
    }
     environment {
-        DOCKER_IMAGE_NAME = 'calculator'
+        DOCKER_IMAGE_NAME = 'temp_calculator'
         GITHUB_REPO_URL = 'https://github.com/AayushiPrajapati/temp_calculator.git'
     }
 
@@ -30,9 +30,9 @@ pipeline {
         stage('Push Docker Images') {
             steps {
                 script{
-                    docker.withRegistry('', 'DockerHubCred') {
-                    sh 'docker tag calculator iiitb/calculator:latest'
-                    sh 'docker push iiitb/calculator'
+                    docker.withRegistry('', 'dockerhub_cred') {
+                    sh 'docker tag calculator aayushi6402/temp_calculator:latest'
+                    sh 'docker push aayushi6402/temp_calculator'
                     }
                  }
             }
