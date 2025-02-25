@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('', 'dockerhub_cred') {
-                    sh 'docker tag calculator aayushi6402/temp_calculator:latest'
+                    sh 'docker tag temp_calculator aayushi6402/temp_calculator:latest'
                     sh 'docker push aayushi6402/temp_calculator'
                     }
                  }
@@ -53,12 +53,12 @@ pipeline {
 }
  post {
         success {
-            mail to: 'b.thangaraju@iiitb.ac.in',
+            mail to: 'aayushi312000@gmail.com',
                  subject: "Application Deployment SUCCESS: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                  body: "The build was successful!"
         }
         failure {
-            mail to: 'b.thangaraju@iiitb.ac.in',
+            mail to: 'aayushi312000@gmail.com',
                  subject: "Application Deployment FAILURE: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                  body: "The build failed."
         }
